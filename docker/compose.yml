@@ -6,6 +6,11 @@ services:
       dockerfile: docker/Dockerfile
     environment:
       - COLOR=blue
+    command: >
+      uvicorn app.asgi:application
+      --host 0.0.0.0 --port 8000
+      --workers 2
+      --loop uvloop
     networks:
       - web
 
@@ -26,6 +31,11 @@ services:
       dockerfile: docker/Dockerfile
     environment:
       - COLOR=green
+    command: >
+      uvicorn app.asgi:application
+      --host 0.0.0.0 --port 8000
+      --workers 2
+      --loop uvloop
     networks:
       - web
 
