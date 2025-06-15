@@ -4,6 +4,5 @@ from .metrics import MetricsView
 
 urlpatterns = [
     path('healthz/', healthz, name='healthz'),
-    path('metrics/', MetricsView.as_view(), name='metrics'),
-    path('chat/', include('app.chat.routing')),
+    path('metrics/', MetricsView.as_view(), name='metrics')
 ]

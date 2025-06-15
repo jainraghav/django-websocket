@@ -1,5 +1,5 @@
 COMPOSE_FILE="docker/compose.yml"
-# SMOKE_CMD="pytest tests/smoke --maxfail=1 -q"
+SMOKE_CMD="pytest app/tests/smoke --maxfail=1 -q"
 HEALTH_URL="http://localhost/healthz/"
 NGINX_CONF="docker/nginx.conf"
 
@@ -45,8 +45,8 @@ for i in {1..15}; do
   sleep 2
 done
 
-# echo "Running smoke tests"
-# eval "$SMOKE_CMD"
+echo "Running smoke tests"
+eval "$SMOKE_CMD"
 
 echo "Reloading proxy to send traffic to $next"
 docker compose -f "$COMPOSE_FILE" exec proxy nginx -s reload

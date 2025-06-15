@@ -30,10 +30,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
         last_shutdown.set(time.time())
         active_connections.dec()
 
-        await self.send(text_data=json.dumps({
-            "bye": True,
-            "total": self.counter
-        }))
+        try:
+            await self.send(text_data=json.dumps({
+                "bye": True, "total": self.counter
+            }))
+        except RuntimeError:
+            pass
+
         await self.channel_layer.group_discard("heartbeat", self.channel_name)
         logger.info("ws_disconnect", extra={"code": close_code})
 
