@@ -1,4 +1,4 @@
-SERVICE="app_blue"                                 # your service name in compose.yml
+SERVICE="app_blue" # active service name
 COMPOSE_FILE="docker/compose.yml"
 
 echo "Tailing ERRORs from ${SERVICE}..."
