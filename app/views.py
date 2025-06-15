@@ -1,6 +1,8 @@
 import os
 from django.http import JsonResponse
 import logging
+from .metrics import active_connections, last_shutdown
+
 logger = logging.getLogger(__name__)
 
 def healthz(request):
